@@ -81,6 +81,7 @@ handle_request({initialize, Params}) ->
             _ ->
                 #{}
         end,
+    {ok, Cwd2} = file:get_cwd(),
     ok = els_config:initialize(RootUri, Capabilities, InitOptions, lsp_notification),
     {response, server_capabilities()};
 handle_request({initialized, _Params}) ->

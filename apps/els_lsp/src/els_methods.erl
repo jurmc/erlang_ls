@@ -155,6 +155,8 @@ method_to_function_name(Method) ->
 
 -spec initialize(params(), els_server:state()) -> result().
 initialize(Params, State) ->
+    #{ <<"rootUri">> := RootUri } = Params,
+    ?LOG_INFO("jurmc: Params[Uri]: ~p", [RootUri]),
     Provider = els_general_provider,
     Request = {initialize, Params},
     {response, Response} = els_provider:handle_request(Provider, Request),
